@@ -30,7 +30,7 @@ public class MakePaymentController {
 
 
         //ReservationReceipt reservationReceipt = this.reservationReceiptRepository.findOne(idBill);
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
     Date d = new Date();
     try {
         d = formatter.parse(date);
@@ -39,9 +39,8 @@ public class MakePaymentController {
     }
            PaymentSlip payment = new PaymentSlip(idBill,name,bank,time,d);
            this.paymentSlipRepository.save(payment);
-
-
-           return "{\"status\":\"found\"}";
+           
+           return "{\"status\":\"save\"}";
 
 
     }

@@ -11,6 +11,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import javax.persistence.ManyToOne;
 
 @Data
 @Entity
@@ -20,6 +21,9 @@ public class Ballroombill {
 	@GeneratedValue
 	Long id;
 
+ @ManyToOne
+	private Ballroom ballroomID;
+
 	private String billId;
 	private String details;
 	private Long amount;
@@ -28,12 +32,13 @@ public class Ballroombill {
 
 	private Ballroombill() {}
 
-	public Ballroombill(String billId,Date startDate,Date endDate, String details,Long amount) {
+	public Ballroombill(String billId,Date startDate,Date endDate, String details,Long amount,Ballroom ballroomID) {
 		this.billId = billId;
 		this.startDate = startDate;
 		this.endDate = endDate;
 		this.details = details;
 		this.amount = amount;
+		this.ballroomID = ballroomID;
 
 	}
 }

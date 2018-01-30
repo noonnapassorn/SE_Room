@@ -23,7 +23,13 @@ class  Payment2 extends React.Component {
   showMenu() {
     this.props.showMenu();
   }
-
+  handleSave(){
+    let {name,idBill,bankcheck,time,date,selectedBanks} = this.props.state
+    // /name/{name}/idBill/{idBill}/bank/{bank}/time/{time}/date/{date}
+    client({method: 'GET', path: `/name/${name}/idBill/${idBill}/bank/${selectedBanks}/time/${time}/date/${date}`}).done(response => {
+             console.log(response)
+     });
+  }
   render() {
 
     return (
@@ -55,7 +61,7 @@ class  Payment2 extends React.Component {
         เวลาที่โอน : {this.props.state.time}
         </p>
         <div style={{ textAlign: 'center' }}>
-        <Ons.Button>บันทึก</Ons.Button>
+        <Ons.Button onClick={this.handleSave.bind(this)}>บันทึก</Ons.Button>
         </div>
 
           </Ons.Card>
